@@ -6,5 +6,15 @@
 const word = 'hello';
 
 let vowelsAndConsonantsResult = '';
-
+let vowels ='aeyuioAEYUIO';
+let numVowels = 0;
+let numConsonants =0;
+for (let i = 0; i < word.length; i++){
+    if (vowels.includes(word[i])){
+        ++numVowels;
+    }
+}
+numConsonants = word.length - numVowels;
+vowelsAndConsonantsResult = `${word} contains ${numVowels} vowels and ${numConsonants} consonants`;
+console.log(vowelsAndConsonantsResult);
 export { vowelsAndConsonantsResult };
