@@ -10,13 +10,7 @@
 const forOf = [];
 const arr = [1,2,3,4,5,6,7,8,9,10];
 for(let i of arr){
-  if(i % 2 === 0){
-    i = i ** 2;
-    forOf.push(i);
-  } else {
-    i = i ** 3;
-    forOf.push(i);
-  }
+  forOf.push(i % 2 === 0 ? i ** 2 : i ** 3)
 }
 console.log(forOf);
 
