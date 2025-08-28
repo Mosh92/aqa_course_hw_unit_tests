@@ -12,8 +12,26 @@
   const myPizzasT1 = ['Peperoni', 'Margherita', 'Diablo', 'Vegetarian'];
   const myPizzasT2 = ['Peperoni', 'Caprichosa', 'Diablo', '4 cheeses', 'hawai'];
 */
-
-let resultUnique;
+const competitorPizzas = ['Peperoni', 'Caprichosa', 'Diablo', '4 cheeses', 'hawai'];
+const myPizzasT1 = ['Peperoni', 'Margherita', 'Diablo', 'Vegetarian'];
+const myPizzasT2 = ['Peperoni', 'Caprichosa', 'Diablo', '4 cheeses', 'hawai'];
+let resultUnique = [];
 let resultNull;
+let sum = 0;
 
-export { resultNull, resultUnique };
+const competitorPizzasUpperCase = [];
+for(let i of competitorPizzas){
+  competitorPizzasUpperCase.push(i.toUpperCase());
+}
+
+for (let i of myPizzasT2){
+  if(!competitorPizzasUpperCase.includes(i.toUpperCase())){
+    resultUnique.push(i);
+  } else sum = sum + 1;
+}
+if (sum === myPizzasT2.length){
+  resultNull = null;
+  console.log(resultNull);
+} else console.log(resultUnique);
+
+// export { resultNull, resultUnique };
