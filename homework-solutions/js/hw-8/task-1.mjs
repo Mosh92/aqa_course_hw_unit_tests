@@ -13,14 +13,21 @@
   8. every - проверьте, что все элементы массива двухзначные //false
 */
 const numbers = [7, 8, 2, 30, 85, 95, 77, 94, 37, 31];
+const divisibleByThree = []; 
+let forEach = divisibleByThree;
+numbers.forEach(el => {
+  if (el % 3 === 0) {
+    return divisibleByThree.push(el);
+  }
+});
+let map = numbers.map ((el, index,arr) => el - arr.length);
+let filter = numbers.filter((el,index,arr) => el > arr[index-1]);
+let find = numbers.find((el, index) => el ===index);
+let sort = [...numbers].sort((a,b) =>  a - b);
+let sort2 = numbers.toSorted((a,b) => a-b)
+let reduce = numbers.reduce((sum, el) => sum+el,0);
+let some =numbers.some(el => el >90);
+let every = numbers.every(el => el >= 10 && el <= 99);
 
-let forEach;
-let map;
-let filter;
-let find;
-let sort;
-let reduce;
-let some;
-let every;
-
+console.log(forEach, map, filter,find,sort,sort2,reduce,some, every)
 export { forEach, map, filter, find, sort, reduce, some, every };
