@@ -4,9 +4,13 @@
 */
 
 function isPalindrom(word) {
-  // Ваш код
+if (typeof word !== 'string'){
+  return false
 }
-
+  let newWord = word.split("").reverse().join("")
+  return (newWord.toLowerCase() === word.toLowerCase())
+}
+console.log(isPalindrom('потоп'))
 /*
  2. findLongestWords()
  Написать функцию, которая принимает предложение (слова разделенные только пробелами) в качестве параметра 
@@ -15,7 +19,14 @@ function isPalindrom(word) {
 */
 
 function findLongestWords(sentence) {
-  // Ваш код
-}
+  if(sentence == "" || typeof sentence !== 'string'){
+    return [];
+  } else{
+  let newSentence = sentence.split(" ").map(el => el.length)
+  let maxNumber = Math.max(...newSentence)
+  return sentence.split(" ").filter(el => el.length === maxNumber)
+  //.join(" ")
+}}
+console.log(findLongestWords('Я люблю собак и котов'))
 
 export { isPalindrom, findLongestWords };
