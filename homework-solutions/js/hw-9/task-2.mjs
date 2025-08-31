@@ -14,23 +14,45 @@ const characters = [
 ];
 
 function addCharacter(character) {
-  // Ваш код
+  if (typeof character.name !== 'string') {
+    throw new Error('Name should be string');
+  }
+  if (typeof character.age !== 'number') {
+    throw new Error('Age should be number');
+  }
+  characters.push(character);
 }
+// addCharacter({ name: 'Wilma', age: 30 })
+// console.log(characters)
 
 function getCharacter(name) {
-  // Ваш код
+  return characters.find(el => el.name === name )
 }
 
 function getCharactersByAge(minAge) {
-  // Ваш код
+  if (typeof minAge !== 'number') {
+    throw new Error('Age should be number');
+  } 
+  return characters.filter(el => el.age >= minAge )
 }
+//console.log(getCharactersByAge(36))
 
 function updateCharacter(name, newCharacter) {
-  // Ваш код
+  let findCaracter = getCharacter(name)
+  findCaracter.name = newCharacter.name;
+  findCaracter.age = newCharacter.age;
+  return findCaracter
 }
+//updateCharacter('Bob', 'Sergey')
+//console.log(characters)
 
 function removeCharacter(name) {
-  // Ваш код
+  let findCharacter = characters.findIndex(el => el.name === name )
+  if(findCharacter === -1) {
+    throw new Error('Name should be string');
+  } else return characters.splice(findCharacter, 1)
 }
+//removeCharacter('Sergey')
+//console.log(characters)
 
 export { characters, addCharacter, updateCharacter, getCharacter, getCharactersByAge, removeCharacter };
