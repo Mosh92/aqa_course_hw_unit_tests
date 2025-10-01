@@ -5,7 +5,14 @@
     Значения в строке должны ссылаться на контекст ЭТОГО ОБЪЕКТА, без подмен.
 */
 
-let qa;
+let qa = {
+ "name": 'Sergey',
+ "age": 33,
+ "salary": "100.000$",
+ getInfo(greetingsWord){
+  return `${greetingsWord}, my name is ${this.name}, I'm ${this.age} and my salary is ${this.salary}`
+ }
+};
 
 /*
  2. Changing the context
@@ -15,16 +22,20 @@ let qa;
   - Вызовите метод getInfo объекта qa c контекстом вызова объекта anotherQa с помощью метода apply()
  */
 
-let anotherQa;
+let anotherQa = {
+ "name": 'Sergey2',
+ "age": 37,
+ "salary": "1000.000$",
+}
 
 // Используйте bind с greetingWord "Hello"
-let bindResult;
+let bindResult = qa.getInfo.bind(anotherQa)('Hello');
 
 // Используйте call с greetingWord "Hi"
-let callResult;
+let callResult = qa.getInfo.call(anotherQa, 'Hi');
 
 // Используйте apply с greetingWord "Hey"
-let applyResult;
+let applyResult = qa.getInfo.apply(anotherQa, ['Hey']);
 
 /*
  3. Closures
@@ -37,10 +48,18 @@ let applyResult;
   - Вызовите functionCallCounter() 5 раз, убедитесь что в консоли верно выводятся данные
 */
 
-function createCounter() {
-  // Ваш код
+function createCounter(increment) {
+let count = 0;
+  return function() {
+    count += increment;
+    console.log(`Function was called ${count} times`);
+    return count; 
+  };
 }
-
-const functionCallCounter = createCounter();
-
+const functionCallCounter = createCounter(1);
+// functionCallCounter(); 
+// functionCallCounter(); 
+// functionCallCounter(); 
+// functionCallCounter(); 
+// functionCallCounter(); 
 export { qa, bindResult, callResult, applyResult, functionCallCounter, anotherQa };
